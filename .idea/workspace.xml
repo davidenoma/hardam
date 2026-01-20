@@ -4,17 +4,318 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39bf9feb-4c6a-403d-87c3-e5fdd90db620" name="Changes" comment="Add initial project structure and scripts for PrediXcan paper">
-      <change afterPath="$PROJECT_DIR$/.idea/HAGPAS.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/covariance/snp_weights_Brain_Frontal_Cortex_BA9_cov.tsv.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/Brain_Frontal_Cortex_BA9.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exec_hagpas.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/har-weight-train.R" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/__init__.py" afterDir="false" />
+    <list default="true" id="39bf9feb-4c6a-403d-87c3-e5fdd90db620" name="Changes" comment="Add core MetaXcan files, test data, scripts, and example resources for initial project setup">
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/AUTHORS" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/BuildExpressionProduct.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/CHANGES" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/COPYRIGHT" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/CovarianceBuilder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/M00_prerequisites.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/M01_covariances_correlations.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/M02_variances.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/M03_betas.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/M04_zscores.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/MANIFEST.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/MPSimulation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/MetaMany.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/MetaXcanUI.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/MulTiXcan.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/PrediXcan.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/PrediXcanAssociation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/Predict.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/SMulTiXcan.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/SPrediXcan.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/ToHDF5.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/build_minimal_data_requirements.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/build_minimal_example_data.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/conda_env.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/doc/a_f_f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/doc/a_f_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/doc/a_f_z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/doc/gui_clean.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/doc/gui_run.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/doc/gui_running.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/ez_setup.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/Constants.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/DataSet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/DataSetSNP.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/Exceptions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/Formats.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/Gene.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/KeyedDataSet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/Logging.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/MainScreen.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/MainScreenView.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/MatrixManager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/MatrixManager2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/MetaXcanUITask.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/NamingConventions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/Person.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/PrediXcanFormatUtilities.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/PredictionModel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/ThousandGenomesUtilities.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/Utilities.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/WeightDBUtilities.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/cross_model/JointAnalysis.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/cross_model/Utilities.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/cross_model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/deprecated/DBLoaders.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/deprecated/MatrixUtilities.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/deprecated/MethodGuessing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/deprecated/Normalization.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/deprecated/SQLUtilities.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/deprecated/ZScoreCalculation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/deprecated/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/expression/Expression.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/expression/HDF5Expression.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/expression/PlainTextExpression.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/expression/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/genotype/BGENGenotype.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/genotype/CYVCF2Genotype.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/genotype/DosageGenotype.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/genotype/GTExGenotype.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/genotype/GeneExpressionMatrixManager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/genotype/Genotype.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/genotype/GenotypeAnalysis.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/genotype/Helpers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/genotype/ModelTrainingGenotype.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/genotype/PYVCFGenotype.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/genotype/Utilities.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/genotype/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/gwas/GWAS.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/gwas/GWASSpecialHandling.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/gwas/Utilities.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/gwas/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/metaxcan/AssociationCalculation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/metaxcan/MetaXcanResultsManager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/metaxcan/Utilities.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/metaxcan/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/misc/DataFrameStreamer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/misc/FeatureMatrix.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/misc/GWASAndModels.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/misc/Genomics.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/misc/KeyedDataSource.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/misc/Math.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/misc/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/predixcan/MultiPrediXcanAssociation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/predixcan/PrediXcanAssociation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/predixcan/Simulations.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/predixcan/Utilities.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/metax/predixcan/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/setup.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/setup.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/CreateGTExLike.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/SampleData.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/GWAS/scz2.gwas.results.txt.gz.b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/GWAS/scz2/scz2.gwas.results.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/GWAS/scz2b/scz2.gwas.results.1.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/GWAS/scz2b/scz2.gwas.results.22.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/GWAS/scz2c/scz2.gwas.results.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/GWAS/scz2d/scz2.gwas.results.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/beta_builder.R" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/convert_model_to_text.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov/cov.duplicate.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov/cov.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov/cov.uncontiguous.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Adipose_Subcutaneous.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Adipose_Visceral_Omentum.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Adrenal_Gland.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Artery_Aorta.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Artery_Coronary.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Artery_Tibial.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Brain_Anterior_cingulate_cortex_BA24.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Brain_Caudate_basal_ganglia.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Brain_Cerebellar_Hemisphere.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Brain_Cerebellum.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Brain_Cortex.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Brain_Frontal_Cortex_BA9.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Brain_Hippocampus.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Brain_Hypothalamus.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Brain_Nucleus_accumbens_basal_ganglia.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Brain_Putamen_basal_ganglia.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Breast_Mammary_Tissue.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Cells_EBV-transformed_lymphocytes.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Cells_Transformed_fibroblasts.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Colon_Sigmoid.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Colon_Transverse.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Esophagus_Gastroesophageal_Junction.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Esophagus_Mucosa.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Esophagus_Muscularis.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Heart_Atrial_Appendage.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Heart_Left_Ventricle.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Liver.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Lung.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Muscle_Skeletal.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Nerve_Tibial.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Ovary.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Pancreas.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Pituitary.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Prostate.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Skin_Not_Sun_Exposed_Suprapubic.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Skin_Sun_Exposed_Lower_leg.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Small_Intestine_Terminal_Ileum.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Small_Intestine_Terminal_Ileum.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Spleen.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Stomach.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Testis.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Thyroid.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Uterus.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Vagina.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/cov_3/TW_Whole_Blood.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs/test_1.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs/test_2.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs/test_3.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs/test_db_1.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs/test_db_2.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs/test_db_3.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_2/model_sim_1.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_2/model_sim_1.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_2/model_sim_2.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_2/model_sim_2.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Adipose_Subcutaneous_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Adipose_Subcutaneous_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Adipose_Visceral_Omentum_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Adipose_Visceral_Omentum_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Adrenal_Gland_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Adrenal_Gland_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Artery_Aorta_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Artery_Aorta_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Artery_Coronary_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Artery_Coronary_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Artery_Tibial_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Artery_Tibial_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Anterior_cingulate_cortex_BA24_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Anterior_cingulate_cortex_BA24_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Caudate_basal_ganglia_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Caudate_basal_ganglia_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Cerebellar_Hemisphere_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Cerebellar_Hemisphere_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Cerebellum_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Cerebellum_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Cortex_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Cortex_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Frontal_Cortex_BA9_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Frontal_Cortex_BA9_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Hippocampus_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Hippocampus_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Hypothalamus_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Hypothalamus_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Nucleus_accumbens_basal_ganglia_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Nucleus_accumbens_basal_ganglia_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Putamen_basal_ganglia_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Brain_Putamen_basal_ganglia_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Breast_Mammary_Tissue_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Breast_Mammary_Tissue_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Cells_EBV-transformed_lymphocytes_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Cells_EBV-transformed_lymphocytes_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Cells_Transformed_fibroblasts_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Cells_Transformed_fibroblasts_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Colon_Sigmoid_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Colon_Sigmoid_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Colon_Transverse_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Colon_Transverse_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Esophagus_Gastroesophageal_Junction_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Esophagus_Gastroesophageal_Junction_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Esophagus_Mucosa_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Esophagus_Mucosa_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Esophagus_Muscularis_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Esophagus_Muscularis_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Heart_Atrial_Appendage_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Heart_Atrial_Appendage_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Heart_Left_Ventricle_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Heart_Left_Ventricle_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Liver_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Liver_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Lung_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Lung_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Muscle_Skeletal_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Muscle_Skeletal_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Nerve_Tibial_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Nerve_Tibial_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Ovary_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Ovary_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Pancreas_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Pancreas_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Pituitary_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Pituitary_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Prostate_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Prostate_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Skin_Not_Sun_Exposed_Suprapubic_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Skin_Not_Sun_Exposed_Suprapubic_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Skin_Sun_Exposed_Lower_leg_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Skin_Sun_Exposed_Lower_leg_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Small_Intestine_Terminal_Ileum_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Small_Intestine_Terminal_Ileum_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Spleen_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Spleen_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Stomach_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Stomach_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Testis_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Testis_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Thyroid_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Thyroid_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Uterus_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Uterus_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Vagina_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Vagina_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Whole_Blood_0.5.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dbs_3/TW_Whole_Blood_0.5.weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dosage_set_1/Fail" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dosage_set_1/set.sample" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dosage_set_1/set_chr1.hap.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/dosage_set_1/set_chr1.legend.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/filtered_dosage/chr1.dosage.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/genotype/gtex_like.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/genotype/gtex_snp.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/gtex_like_eqtl/ENSG00000227232.4.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/gtex_like_eqtl/ENSG00000228463.4.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/gtex_like_eqtl/ENSG00000237683.5.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/gtex_like_eqtl/ENSG00000238009.2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/gtex_like_eqtl/ENSG00000239906.1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/gtex_like_eqtl/ENSG00000241860.2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/gtex_like_eqtl/data.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/meta_covariance/snps_covariance.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/on_the_fly_mapping/test_db.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/on_the_fly_mapping/test_vcf.vcf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/snp.txt.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/test.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/test.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/test_db.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/test_db_2.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/_td/trim_data_for_multi_tissue_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/cov_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/gen_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/scz2_sample.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_M00_prerequisites.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_M01_covariances_correlations.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_M03_betas.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_Person.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_association_calculation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_dataframe_streamer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_dataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_dataset_snp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_dbloaders.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_feature_matrix.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_gene.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_gtex_genotype.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_gwas.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_gwas_special_handling.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_gwas_utilities.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_keyed_data_source.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_keyed_dataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_matrix_manager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_prediction_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_predixcan_format_utilities.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_thousand_genomes_utilities.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_utilities.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/software_deps/MetaXcan/software/tests/test_weight_db_utilities.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sumstats/SCZ_sumstats_hg38_chr22.tsv.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README_HAGPAS.md" beforeDir="false" afterPath="$PROJECT_DIR$/README_HAGPAS.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +332,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "davidenoma"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/davidenoma/hagpas.git",
+    "accountId": "4615fb3c-9896-4e62-9062-0f577db701ff"
+  }
+}]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 0
 }]]></component>
@@ -76,11 +389,34 @@
       <option name="presentableId" value="Default" />
       <updated>1768937336584</updated>
     </task>
+    <task id="LOCAL-00001" summary="Add initial project structure and essential files">
+      <option name="closed" value="true" />
+      <created>1768939684551</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1768939684551</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add HAGPAS project documentation and fix S-PrediXcan script path in exec_hagpas.sh">
+      <option name="closed" value="true" />
+      <created>1768941938174</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1768941938174</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add initial project structure and scripts for PrediXcan paper" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add initial project structure and scripts for PrediXcan paper" />
+    <MESSAGE value="Add initial project structure and essential files" />
+    <MESSAGE value="Add HAGPAS project documentation and fix S-PrediXcan script path in exec_hagpas.sh" />
+    <MESSAGE value="Add core PrediXcan scripts, models, documentation, and example data" />
+    <MESSAGE value="Add core MetaXcan files, test data, scripts, and example resources for initial setup" />
+    <MESSAGE value="Add core MetaXcan files, test data, scripts, and example datasets for initial implementation" />
+    <MESSAGE value="Add core MetaXcan files, test data, scripts, and example resources for initial project setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add core MetaXcan files, test data, scripts, and example resources for initial project setup" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

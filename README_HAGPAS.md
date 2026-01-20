@@ -70,5 +70,24 @@ install.packages(c("bigsnpr", "glmnet", "grpreg", "dplyr", "data.table", "string
 - [MetaXcan Wiki](https://github.com/hakyimlab/MetaXcan/wiki)
 - [GENCODE Human Release 26](https://www.gencodegenes.org/human/release_26.html)
 
+## 6. License and Credits
+
+This project uses the MetaXcan and S-PrediXcan software, which are licensed under the MIT License (see: https://github.com/hakyimlab/MetaXcan). 
+
+> Copyright (c) 2016 Hakymlab
+> 
+> Permission is hereby granted, free of charge, to any person obtaining a copy
+> of this software and associated documentation files (the "Software"), to deal
+> in the Software without restriction, including without limitation the rights
+> to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> copies of the Software, and to permit persons to whom the Software is
+> furnished to do so, subject to the following conditions:
+> 
+> The above copyright notice and this permission notice shall be included in all
+> copies or substantial portions of the Software.
+
+Please cite the MetaXcan authors and repository in any publications or derivative works:
+- MetaXcan: https://github.com/hakyimlab/MetaXcan
+
 ---
 *Last updated: January 20, 2026*
