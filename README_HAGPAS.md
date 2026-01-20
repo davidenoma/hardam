@@ -62,7 +62,7 @@ install.packages(c("bigsnpr", "glmnet", "grpreg", "dplyr", "data.table", "string
 ```
 
 ## 4. Test Data
-- HAR trained S-PrediXcan database files: `database/`
+- HAR trained S-PrediXcan styled database weight files: `database/`
 - Covariance files (from GTEx genotypes): `covariances/`
 - Example summary statistics: `sumstats/SCZ_sumstats_hg38_chr22.tsv.gz`
 
@@ -86,8 +86,4 @@ This project uses the MetaXcan and S-PrediXcan software, which are licensed unde
 > The above copyright notice and this permission notice shall be included in all
 > copies or substantial portions of the Software.
 
-Please cite the MetaXcan authors and repository in any publications or derivative works:
-- MetaXcan: https://github.com/hakyimlab/MetaXcan
-
----
 *Last updated: January 20, 2026*
