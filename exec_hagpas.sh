@@ -45,7 +45,7 @@ for DB_PATH in "$DB_FOLDER"/*.db; do
   OUT_FILE="$OUT_FOLDER/${DISEASE}_${SUFFIX}.csv"
 
   echo ">>> Running S-PrediXcan for $DISEASE on $tissue (HAR only)"
-  python3.9 software_deps/MetaXcan/SPrediXcan.py \
+  python3.9 software_deps/MetaXcan/software/SPrediXcan.py \
     --model_db_path            "$DB_PATH" \
     --covariance               "$COV_FOLDER/$COV_FILE" \
     --gwas_folder              "$GWAS_FOLDER" \
@@ -62,3 +62,5 @@ for DB_PATH in "$DB_FOLDER"/*.db; do
 done
 
 echo "All done — outputs in $OUT_FOLDER"
+
+
