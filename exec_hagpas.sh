@@ -2,11 +2,11 @@
 set -euo pipefail
 
 # -------------------------------------------------------------------
-# exec_hagpas.sh
+# exec_HARDAM.sh
 
 #
 # Usage:
-#   ./exec_hagpas.sh <DISEASE> <GWAS_PATTERN> <SNP_COL> <EFF_ALLELE> \
+#   ./exec_HARDAM.sh <DISEASE> <GWAS_PATTERN> <SNP_COL> <EFF_ALLELE> \
 #                        <NON_EFF_ALLELE> <BETA_COL> <SE_COL> [--additional_output]
 # -------------------------------------------------------------------
 

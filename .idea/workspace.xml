@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39bf9feb-4c6a-403d-87c3-e5fdd90db620" name="Changes" comment="Add scz_PFC.csv with S-PrediXcan results for schizophrenia in prefrontal cortex">
+    <list default="true" id="39bf9feb-4c6a-403d-87c3-e5fdd90db620" name="Changes" comment="Rename README_HAGPAS.md to README.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,36 +22,36 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "davidenoma"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;davidenoma&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/davidenoma/hagpas.git",
-    "accountId": "4615fb3c-9896-4e62-9062-0f577db701ff"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/davidenoma/hagpas.git&quot;,
+    &quot;accountId&quot;: &quot;4615fb3c-9896-4e62-9062-0f577db701ff&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="38XE680qZUokDPlWYpZbqU5WkFC" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHELLCHECK.PATH": "/Users/davidenoma/Library/Application Support/JetBrains/PyCharmCE2025.1/plugins/Shell Script/shellcheck",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/davidenoma/PycharmProjects/HAGPAS/software_deps"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;/Users/davidenoma/Library/Application Support/JetBrains/PyCharmCE2025.1/plugins/Shell Script/shellcheck&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/davidenoma/PycharmProjects/HAGPAS/software_deps&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/software_deps" />
@@ -119,7 +119,23 @@
       <option name="project" value="LOCAL" />
       <updated>1768943045355</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Rename README_HAGPAS.md to README.md">
+      <option name="closed" value="true" />
+      <created>1768949798176</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1768949798176</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Update workspace.xml to reflect recent task history and commit messages">
+      <option name="closed" value="true" />
+      <created>1768949877856</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1768949877856</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -132,7 +148,8 @@
     <MESSAGE value="Add core MetaXcan files, test data, scripts, and example resources for initial project setup" />
     <MESSAGE value="Update README_HAGPAS.md to clarify database file description and remove MetaXcan citation section" />
     <MESSAGE value="Add scz_PFC.csv with S-PrediXcan results for schizophrenia in prefrontal cortex" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add scz_PFC.csv with S-PrediXcan results for schizophrenia in prefrontal cortex" />
+    <MESSAGE value="Rename README_HAGPAS.md to README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rename README_HAGPAS.md to README.md" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

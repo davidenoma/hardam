@@ -1,4 +1,4 @@
-# HAGPAS Project Documentation
+# HARDAM Project Documentation
 
 ## 1. Training with `har-weight-train.R`
 
@@ -26,11 +26,11 @@ Rscript har-weight-train.R {genotype_prefix} hars.bed gencode.v26.annotation.gtf
   - data.table
   - stringr
 
-## 2. Running HAGPAS
+## 2. Running HARDAM
 
 ### Example Command
 ```
-bash exec_hagpas.sh scz "SCZ_sumstats_hg38_chr22.tsv.gz" ID A1 A2 BETA SE
+bash exec_HARDAM.sh scz "SCZ_sumstats_hg38_chr22.tsv.gz" ID A1 A2 BETA SE
 ```
 - `scz`: Disease/trait label
 - `SCZ_sumstats_hg38_chr22.tsv.gz`: GWAS summary statistics (chromosome 22)
@@ -46,11 +46,11 @@ bash exec_hagpas.sh scz "SCZ_sumstats_hg38_chr22.tsv.gz" ID A1 A2 BETA SE
 
 ### Python Environment
 - The default environment is `/opt/anaconda3/envs/oldnumpy`.
-- For reproducibility, create a dedicated environment for HAGPAS with Python 3.9:
+- For reproducibility, create a dedicated environment for HARDAM with Python 3.9:
 
 ```
-conda create -n hagpas_env python=3.9
-conda activate hagpas_env
+conda create -n HARDAM_env python=3.9
+conda activate HARDAM_env
 pip install numpy scipy pandas pyarrow h5py statsmodels cyvcf2 bgen_reader pyliftover
 ```
 - Or use the provided `conda_env.yaml` as a template and update Python version to 3.9.
