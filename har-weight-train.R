@@ -220,7 +220,7 @@ extend_har_regions <- function(bim_dt, har_bed_file, chr) {
     while (nrow(region_snps) < 10) {
       start <- max(0, start - 500)
       end <- end + 500
-      if ((end - start) > 5e6) {
+      if ((end - start) > 5e5) {
         message("⚠️ Skipping HAR: ", har_id, " due to excessive expansion (>5Mb).")
         break
       }
