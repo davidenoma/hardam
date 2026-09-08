@@ -14,7 +14,7 @@ The cleaned test workflow keeps these files:
   - `geno_data/test_geno.fam` - 300 individuals
 - Expression file: `geno_data/Brain_Frontal_Cortex_BA9.v8.normalized_expression.chr1_test20_v2.bed`
 - HAR BED file: `hars.bed`
-- GENCODE annotation: `annotations/gencode.v26.annotation.gtf`
+- GENCODE annotation: `annotations/gencode.v26.annotation.gtf.gz`
 - Test GWAS summary statistics: `sumstats/test_with_cis_sumstats.tsv.gz`
 - Final HAR+CIS model DB: `database/Brain_Frontal_Cortex_BA9_with_cis.db`
 - Final HAR+CIS covariance: `covariances/snp_weights_Brain_Frontal_Cortex_BA9_with_cis_cov.tsv.gz`
