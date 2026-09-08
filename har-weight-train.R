@@ -212,22 +212,21 @@ extend_har_regions <- function(bim_dt, har_bed_file, chr) {
     mutate(chrom = gsub("^chr", "", chrom)) %>%
     filter(chrom == chr)
   total_hars <- nrow(har_regions)
+  chromosome_positions <- bim_dt$physical_pos[as.character(bim_dt$chrom) == chr]
   for (i in seq_len(total_hars)) {
-    har_id <- har_regions$har_id[i]
     start <- har_regions$start[i]
     end <- har_regions$end[i]
-    region_snps <- bim_dt %>% filter(chrom == chr & physical_pos >= start & physical_pos <= end)
-    while (nrow(region_snps) < 10) {
-      start <- max(0, start - 500)
-      end <- end + 500
-      if ((end - start) > 5e4) {
-        # message("⚠️ Skipping HAR: ", har_id, " due to excessive expansion (>50kb).")
-        break
-      }
-      region_snps <- bim_dt %>% filter(chrom == chr & physical_pos >= start & physical_pos <= end)
+    # Distance from each SNP to the original interval. The tenth-smallest
+    # distance gives the same stopping point as symmetric 1 bp expansion.
+    # Cap each flank at 50 kb from its original boundary, not total width.
+    distances <- pmax(start - chromosome_positions, chromosome_positions - end, 0)
+    expansion <- if (length(distances) >= 10L) {
+      min(sort(distances, partial = 10L)[10L], 50000)
+    } else {
+      50000
     }
-    har_regions$start[i] <- start
-    har_regions$end[i] <- end
+    har_regions$start[i] <- max(0, start - expansion)
+    har_regions$end[i] <- end + expansion
   }
   message("✅ HAR regions extended successfully! Total: ", nrow(har_regions))
   return(har_regions)
@@ -310,7 +309,8 @@ apply_group_lasso <- function(geno_har, expr_vec, har_snp_info) {
 do_elastic_net <- function(geno, expr, alpha = 0.5) {
   message("🚀 Running Elastic Net...")
   set.seed(FIXED_SEED)
-  fit <- cv.glmnet(as.matrix(geno), expr, alpha = alpha, nfolds = 10, type.measure = "mse")
+  fit <- cv.glmnet(as.matrix(geno), expr, alpha = alpha, nfolds = 10,
+                   type.measure = "mse", keep = TRUE)
   best_lambda <- fit$lambda.min
   return(list(cv_fit = fit, best_lambda = best_lambda))
 }
@@ -394,23 +394,30 @@ combine_har_cis_snps <- function(har_selected_snps, cis_snps, har_snp_info) {
 ### ──────────────────────────────────────────────────────────────────────────────
 ### 📌 Evaluate Model Performance
 evaluate_performance <- function(geno, expr, fit, best_lambda) {
-  pred_expr <- as.vector(predict(fit$cv_fit$glmnet.fit, as.matrix(geno), s = best_lambda))
-
-  # Preserve sample names
-  if (is.null(names(pred_expr)) || length(names(pred_expr)) == 0) {
-    names(pred_expr) <- rownames(geno)
-  }
+  # Held-out elastic-net predictions at lambda.min; HAR feature selection
+  # precedes these folds, so this is not nested validation of HAR selection.
+  lambda_index <- match(best_lambda, fit$cv_fit$lambda)
+  pred_expr <- as.vector(fit$cv_fit$fit.preval[, lambda_index])
+  names(pred_expr) <- rownames(geno)
 
   # Align lengths
   pred_expr <- pred_expr[rownames(geno)]
   expr <- expr[rownames(geno)]
 
-  R2 <- 1 - sum((expr - pred_expr)^2) / sum((expr - mean(expr))^2)
+  R2 <- if (all(is.finite(expr)) && all(is.finite(pred_expr)) &&
+            sd(expr) > 0 && sd(pred_expr) > 0) {
+    cor(expr, pred_expr)^2
+  } else {
+    NA_real_
+  }
 
   nonzero_coef <- coef(fit$cv_fit$glmnet.fit, s = best_lambda)
-  selected_snps <- rownames(nonzero_coef)[nonzero_coef[, 1] != 0]
+  selected_snps <- rownames(nonzero_coef)[nonzero_coef[, 1] != 0 &
+                                         rownames(nonzero_coef) != "(Intercept)"]
 
-  return(list(R2 = R2, best_lambda = best_lambda, selected_snps = selected_snps, pred_expr = pred_expr))
+  retain <- is.finite(R2) && R2 > 0.01 && length(selected_snps) > 0L
+  return(list(R2 = R2, best_lambda = best_lambda, selected_snps = selected_snps,
+              pred_expr = pred_expr, retain = retain))
 }
 
 
@@ -676,7 +683,11 @@ run_pipeline <- function() {
     model <- do_elastic_net(final_geno, expr_vec)
     perf <- evaluate_performance(final_geno, expr_vec, model, model$best_lambda)
 
-    save_results(gene, gene_name, perf$R2, model$best_lambda, ncol(final_geno))
+    if (!perf$retain) {
+      message("Skipping ", gene_name, ": requires finite out-of-fold R2 > 0.01 and a nonzero SNP coefficient.")
+      next
+    }
+    save_results(gene, gene_name, perf$R2, model$best_lambda, length(perf$selected_snps))
     save_weights(gene, model, model$best_lambda, final_snp_info)
     save_predictions(gene, gene_name, chrom, perf$pred_expr, expr_vec)
   }

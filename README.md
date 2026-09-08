@@ -1,12 +1,14 @@
-# HARDAM Project Documentation
+# HARDAM — HARs-Directed Association Mapping
 
-HARDAM trains HAR-informed expression prediction models and runs S-PrediXcan/MetaXcan-style TWAS against GWAS summary statistics. The current tested local workflow uses a chromosome 1 GTEx genotype subset named `test_geno` and the PFC HAR+CIS model.
+HARDAM trains expression prediction models informed by human accelerated regions (HARs) and runs transcriptome-wide association studies (TWAS) using S-PrediXcan and GWAS summary statistics. This guide describes a chromosome 1 test workflow for frontal cortex, BA9 (PFC), using the HAR+CIS model.
+
+The research genotype data are protected. Author-provided test data allow users to exercise the workflow without accessing those research files. The test example demonstrates model training and association testing; it does not reproduce the complete manuscript analyses.
 
 Run all commands from the repository root. Paths below are repo-relative.
 
-## 1. Tested Local Files
+## 1. Test Inputs and Generated Files
 
-The cleaned test workflow keeps these files:
+Before running, place the author-provided test inputs at the following paths:
 
 - Genotype prefix: `geno_data/test_geno`
   - `geno_data/test_geno.bed`
@@ -16,11 +18,14 @@ The cleaned test workflow keeps these files:
 - HAR BED file: `hars.bed`
 - GENCODE annotation: `annotations/gencode.v26.annotation.gtf.gz`
 - Test GWAS summary statistics: `sumstats/test_with_cis_sumstats.tsv.gz`
-- Final HAR+CIS model DB: `database/Brain_Frontal_Cortex_BA9_with_cis.db`
-- Final HAR+CIS covariance: `covariances/snp_weights_Brain_Frontal_Cortex_BA9_with_cis_cov.tsv.gz`
-- Final test TWAS output: `TWAS_results/test_with_cis_PFC_with_cis.csv`
 
-No HAR expansion CSV is required for this tested workflow.
+The workflow generates:
+
+- HAR+CIS model DB: `database/Brain_Frontal_Cortex_BA9_with_cis.db`
+- HAR+CIS covariance: `covariances/snp_weights_Brain_Frontal_Cortex_BA9_with_cis_cov.tsv.gz`
+- Test TWAS output: `TWAS_results/test_with_cis_PFC_with_cis.csv`
+
+HAR expansion is computed during training; no separate expansion CSV is required. Complete [Environment Setup](#6-environment-setup) before running the commands below.
 
 ## 2. Train HAR+CIS Weights
 
@@ -30,23 +35,37 @@ Run `har-weight-train.R` in `har_cis` mode using the `test_geno` PLINK prefix:
 Rscript har-weight-train.R \
   geno_data/test_geno \
   hars.bed \
-  annotations/gencode.v26.annotation.gtf \
+  annotations/gencode.v26.annotation.gtf.gz \
   geno_data/Brain_Frontal_Cortex_BA9.v8.normalized_expression.chr1_test20_v2.bed \
   1 \
   har_cis
 ```
 
-The training script accepts these modes:
+The arguments are positional:
 
-- `har_only`
-- `har_cis`
-- `cis_only`
+| Argument | Description |
+| --- | --- |
+| `plink_prefix` | Common path prefix for the PLINK `.bed`, `.bim`, and `.fam` files. |
+| `har_bed_file` | Tab-separated HAR intervals with four columns: chromosome, start, end, and HAR ID. |
+| `gene_annot_file` | GENCODE GTF annotation; the supplied `.gtf.gz` can be read directly. |
+| `gene_expr_file` | Tab-separated expression BED with chromosome, start, end, and versioned gene ID in the first four columns, followed by sample columns matching genotype IIDs. |
+| `chrom` | Chromosome to analyze, such as `1` or `chr1`. |
+| `mode` | Optional: `har_only` (default), `har_cis`, or `cis_only`. |
 
-For the tested with_cis run, the important outputs are:
+### Training outputs
+
+For the HAR+CIS example, training writes:
 
 - `output_results_seed/model_results_Brain_Frontal_Cortex_BA9.chr1_test20_v2_with_cis.txt`
 - `output_results_seed/snp_weights_Brain_Frontal_Cortex_BA9.chr1_test20_v2_with_cis.txt`
 - `output_results_seed/predicted_expression_Brain_Frontal_Cortex_BA9.chr1_test20_v2_with_cis.txt`
+
+| File | Contents |
+| --- | --- |
+| `model_results_*.txt` | Retained genes, gene names, out-of-fold squared correlation (`R2`), selected lambda (`BestLambda`), and nonzero SNP coefficient count (`NumSNPs`). |
+| `snp_weights_*.txt` | Coefficients fitted on all training samples at the selected lambda, with SNP alleles, gene IDs, and mode-specific annotations. Intercept rows can occur here; the database converter excludes them. |
+| `predicted_expression_*.txt` | Observed expression and held-out elastic-net predictions for each retained gene and sample. |
+
 
 ## 3. Create Model Database
 
@@ -60,11 +79,11 @@ python3 software_deps/create_db.py \
   --out database/Brain_Frontal_Cortex_BA9_with_cis.db
 ```
 
-Expected test DB contents:
+The database contains:
 
-- `weights`: 161 rows
-- `extra`: 10 genes
-- `sample_info`: 175 expression samples
+- `weights`: nonzero SNP coefficients and their effect/reference alleles.
+- `extra`: retained gene metadata and prediction performance.
+- `sample_info`: one row containing `n_samples`. With `--expr`, this value is the number of expression sample columns (175 in the test expression file); the converter does not independently count the genotype–expression intersection.
 
 The model weights are trained on PLINK `--recode A` dosages. For this genotype, those dosages count BIM `allele1`, so `create_db.py` writes `eff_allele=allele1` and `ref_allele=allele2`. This allele convention is required for correct GWAS beta/z-score alignment in S-PrediXcan.
 
@@ -80,9 +99,7 @@ python3 software_deps/create_covariance.py \
   --out covariances/snp_weights_Brain_Frontal_Cortex_BA9_with_cis_cov.tsv.gz
 ```
 
-Expected test covariance size:
-
-- `covariances/snp_weights_Brain_Frontal_Cortex_BA9_with_cis_cov.tsv.gz`: 1,888 lines including header
+The output has columns `GENE`, `RSID1`, `RSID2`, and `VALUE`, with upper-triangular SNP covariance entries, including the diagonal, for each gene. Its row count depends on the newly retained model SNPs.
 
 ## 5. Run HARDAM
 
@@ -106,16 +123,18 @@ This writes:
 TWAS_results/test_with_cis_PFC_with_cis.csv
 ```
 
-The tested output has 11 lines: 1 header plus 10 gene results.
+The output has one header row followed by gene association results. The number of results depends on retained models and SNP overlap with the GWAS.
 
-For another GWAS file, place the file in `sumstats/` and keep the same DB selector:
+The wrapper currently recognizes the PFC database names `Brain_Frontal_Cortex_BA9.db` and `Brain_Frontal_Cortex_BA9_with_cis.db`. Other tissue or mode database names require extending the wrapper's tissue mapping or invoking S-PrediXcan directly.
+
+For another GWAS file, place the file in `sumstats/` and keep the same DB selector. Replace the uppercase placeholders below with your trait label, file pattern, and column names:
 
 ```bash
 PYTHON_BIN=python3 HARDAM_DB_GLOB=database/Brain_Frontal_Cortex_BA9_with_cis.db \
   bash exec_HARDAM.sh \
-  <trait_name> \
-  '<gwas_file_pattern.tsv.gz>' \
-  <snp_column> <effect_allele_column> <non_effect_allele_column> <beta_column> <se_column> \
+  TRAIT_NAME \
+  'GWAS_FILE_PATTERN.tsv.gz' \
+  SNP_COLUMN EFFECT_ALLELE_COLUMN NON_EFFECT_ALLELE_COLUMN BETA_COLUMN SE_COLUMN \
   --additional_output \
   --overwrite
 ```
@@ -146,48 +165,47 @@ Use R 4.4.2 and install:
 install.packages(c("bigsnpr", "glmnet", "grpreg", "dplyr", "data.table", "stringr"))
 ```
 
-`plink` must also be available on `PATH`.
+`plink` must also be available on `PATH`. The local PLINK version checked for this workflow is 1.90b7.2. The verification commands below also use the `sqlite3` command-line tool.
 
-## 7. Quick Verification
 
-Check the retained test genotype and final TWAS output:
-
-```bash
-wc -l geno_data/test_geno.bim geno_data/test_geno.fam TWAS_results/test_with_cis_PFC_with_cis.csv
-```
-
-Expected counts:
-
-```text
-200 geno_data/test_geno.bim
-300 geno_data/test_geno.fam
-11 TWAS_results/test_with_cis_PFC_with_cis.csv
-```
-
-Check the with_cis DB:
-
-```bash
-sqlite3 database/Brain_Frontal_Cortex_BA9_with_cis.db \
-  'select "weights", count(*) from weights union all select "extra", count(*) from extra union all select "sample_info", count(*) from sample_info;'
-```
-
-Expected:
-
-```text
-weights|161
-extra|10
-sample_info|1
-```
-
-## 8. References
+## 7. References
 
 - [MetaXcan Wiki](https://github.com/hakyimlab/MetaXcan/wiki)
 - [GENCODE Human Release 26](https://www.gencodegenes.org/human/release_26.html)
 
+## 8. Citation
+
+If you use HARDAM in your research, please cite:
+
+> Enoma, D. O., Wang, D., Weeraman, J., Gordon, P. M. K., de Koning, A. P. J., Cao, B., Long, Q., & Cao, C. (2026). *Human accelerated regions-directed association mapping discovers trans-regulatory associations in brain disorders*. Manuscript.
+
+This citation describes the manuscript; journal, volume, pages, and DOI will be added when available.
+
+```bibtex
+@unpublished{enoma2026hardam,
+  title = {Human accelerated regions-directed association mapping discovers trans-regulatory associations in brain disorders},
+  author = {Enoma, David O. and Wang, Dinghao and Weeraman, Janith and Gordon, Paul M. K. and de Koning, A. P. Jason and Cao, Bo and Long, Quan and Cao, Chen},
+  year = {2026},
+  note = {Manuscript}
+}
+```
+
+Machine-readable citation metadata are provided in [CITATION.cff](CITATION.cff). For reproducibility, also record the software release or Git commit used in your analysis:
+
+```bash
+git rev-parse HEAD
+```
+
+Describe any local modifications used for the analysis. Please also cite the upstream methods and data resources used in your workflow, including S-PrediXcan/MetaXcan, GTEx, GENCODE, and the relevant GWAS studies.
+
 ## 9. License and Credits
 
-This project uses the MetaXcan and S-PrediXcan software, which are licensed under the MIT License. See: https://github.com/hakyimlab/MetaXcan
+HARDAM's original source code and documentation are distributed under the [MIT License](LICENSE), copyright © 2026 David O. Enoma and HARDAM contributors.
 
-Copyright (c) 2016 Hakymlab
+MIT permits academic and commercial use, modification, and redistribution, provided the copyright and license notice are preserved. It provides the software without warranty. Its permissive terms support broad reuse of HARDAM in research and other software; see the [Open Source Initiative's MIT License](https://opensource.org/license/mit) for the standard terms. The citation request above is a scholarly attribution request, not an additional license restriction.
 
-Last updated: May 24, 2026
+Vendored MetaXcan/S-PrediXcan code retains its upstream MIT license and attribution: copyright © 2015 hakyimlab, with software mostly written by heroico. The [included MetaXcan license](software_deps/MetaXcan/LICENSE) reproduces the [upstream notice](https://github.com/hakyimlab/MetaXcan/blob/master/LICENSE). Other dependencies retain their respective licenses.
+
+The software license does not grant rights to protected genotype data or override the access and redistribution terms of test data, annotations, GWAS summary statistics, or other third-party datasets. Use each dataset under its provider's terms.
+
+Last updated: September 8, 2026
