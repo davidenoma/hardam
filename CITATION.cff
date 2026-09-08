@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: >-
+  If you use HARDAM in your research, please cite the manuscript below and
+  record the software release or Git commit used for your analysis.
+type: software
+title: "HARDAM: HARs-Directed Association Mapping"
+authors:
+  - family-names: Enoma
+    given-names: David O.
+license: MIT
+preferred-citation:
+  type: unpublished
+  title: >-
+    Human accelerated regions-directed association mapping discovers
+    trans-regulatory associations in brain disorders
+  authors:
+    - family-names: Enoma
+      given-names: David O.
+    - family-names: Wang
+      given-names: Dinghao
+    - family-names: Weeraman
+      given-names: Janith
+    - family-names: Gordon
+      given-names: Paul M. K.
+    - family-names: de Koning
+      given-names: A. P. Jason
+    - family-names: Cao
+      given-names: Bo
+    - family-names: Long
+      given-names: Quan
+    - family-names: Cao
+      given-names: Chen
+  year: 2026
+  notes: Manuscript. Publication metadata will be updated when available.
