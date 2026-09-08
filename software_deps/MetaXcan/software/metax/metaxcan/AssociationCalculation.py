@@ -77,7 +77,7 @@ def association(gene, context, return_snps=False):
         i_sigma_l = numpy.sqrt(variances)
 
         #da calcooleishon
-        sigma_g_2 = float(d(d(i_weight,cov),i_weight))
+        sigma_g_2 = float(numpy.asarray(d(d(i_weight,cov),i_weight)).squeeze())
 
         if sigma_g_2 >0:
             try:

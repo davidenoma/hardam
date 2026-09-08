@@ -183,7 +183,7 @@ def _enforce_numeric_columns(d):
     for column in _numeric_columns:
         if column in d:
             a = d[column]
-            if a.dtype == numpy.object:
+            if a.dtype == object:
                 a = [str(x) for x in a]
                 a = [GWASSpecialHandling.sanitize_component(x) for x in a]
             d[column] = numpy.array(a, dtype=numpy.float64)

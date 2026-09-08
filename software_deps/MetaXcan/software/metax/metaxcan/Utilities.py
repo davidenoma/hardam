@@ -115,7 +115,7 @@ class OptimizedContext(SimpleContext):
             while True:
                 w = self._get_weights(gene)
                 gwas = self._get_gwas(list(w.keys()))
-                type = [numpy.str, numpy.float64, numpy.float64, numpy.float64]
+                type = [str, numpy.float64, numpy.float64, numpy.float64]
                 columns = [Constants.SNP, WDBQF.K_WEIGHT, Constants.ZSCORE, Constants.BETA]
                 d = {x: v for x, v in w.items() if x in gwas}
 
@@ -312,7 +312,7 @@ def _results_column_order(with_additional=False):
     return column_order
 
 def format_output(results, context, remove_ens_version):
-    results = results.drop("n_snps_in_model",1)
+    results = results.drop("n_snps_in_model", axis=1)
 
     # Dodge the use of cdf on non finite values
     i = numpy.isfinite(results.zscore)

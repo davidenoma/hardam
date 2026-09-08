@@ -64,7 +64,10 @@ def gwas_data_source(path, snps=None, snp_column_name=None, skip_until_header=No
                 s[comp].append(c)
 
         for c in header_comps:
-            s[c] = numpy.array(pandas.to_numeric(s[c], errors='ignore'))
+            try:
+                s[c] = numpy.array(pandas.to_numeric(s[c], errors="raise"))
+            except (TypeError, ValueError):
+                s[c] = numpy.array(s[c])
 
     return s
 

@@ -220,8 +220,8 @@ extend_har_regions <- function(bim_dt, har_bed_file, chr) {
     while (nrow(region_snps) < 10) {
       start <- max(0, start - 500)
       end <- end + 500
-      if ((end - start) > 5e5) {
-        message("⚠️ Skipping HAR: ", har_id, " due to excessive expansion (>5Mb).")
+      if ((end - start) > 5e4) {
+        # message("⚠️ Skipping HAR: ", har_id, " due to excessive expansion (>50kb).")
         break
       }
       region_snps <- bim_dt %>% filter(chrom == chr & physical_pos >= start & physical_pos <= end)
@@ -668,6 +668,10 @@ run_pipeline <- function() {
     }
 
     # ─────────────── Run Elastic Net & Save ───────────────
+    if (ncol(final_geno) < 2) {
+      message("⚠️ Fewer than 2 SNPs selected for ", gene_name, "; skipping elastic net.")
+      next
+    }
     message("🚀 Elastic Net: ", nrow(final_geno), " samples × ", ncol(final_geno), " SNPs")
     model <- do_elastic_net(final_geno, expr_vec)
     perf <- evaluate_performance(final_geno, expr_vec, model, model$best_lambda)
