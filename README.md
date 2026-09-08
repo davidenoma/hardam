@@ -165,7 +165,37 @@ Use R 4.4.2 and install:
 install.packages(c("bigsnpr", "glmnet", "grpreg", "dplyr", "data.table", "stringr"))
 ```
 
-`plink` must also be available on `PATH`. The local PLINK version checked for this workflow is 1.90b7.2. The verification commands below also use the `sqlite3` command-line tool.
+### PLINK
+
+HARDAM calls the PLINK 1.9 executable as `plink`. The commands below download the 7 September 2026 build from the [official PLINK downloads](https://www.cog-genomics.org/plink/1.9/), extract the executable, add it to `PATH` immediately and in future shell sessions, and print its version. They require `wget` and `unzip` and do not require administrator privileges.
+
+**Linux x86-64 with Bash** — paste this as one command:
+
+```bash
+mkdir -p "$HOME/.local/bin/plink-1.9" && \
+  wget -O "$HOME/.local/bin/plink-1.9/plink.zip" https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20260907.zip && \
+  unzip -o "$HOME/.local/bin/plink-1.9/plink.zip" plink -d "$HOME/.local/bin/plink-1.9" && \
+  chmod +x "$HOME/.local/bin/plink-1.9/plink" && \
+  export PATH="$HOME/.local/bin/plink-1.9:$PATH" && \
+  plink --version && \
+  printf '\nexport PATH="$HOME/.local/bin/plink-1.9:$PATH"\n' >> "$HOME/.bashrc"
+```
+
+**macOS with Zsh** — use the macOS archive and shell configuration instead:
+
+```zsh
+mkdir -p "$HOME/.local/bin/plink-1.9" && \
+  wget -O "$HOME/.local/bin/plink-1.9/plink.zip" https://s3.amazonaws.com/plink1-assets/plink_mac_20260907.zip && \
+  unzip -o "$HOME/.local/bin/plink-1.9/plink.zip" plink -d "$HOME/.local/bin/plink-1.9" && \
+  chmod +x "$HOME/.local/bin/plink-1.9/plink" && \
+  export PATH="$HOME/.local/bin/plink-1.9:$PATH" && \
+  plink --version && \
+  printf '\nexport PATH="$HOME/.local/bin/plink-1.9:$PATH"\n' >> "$HOME/.zshrc"
+```
+
+Run HARDAM from the same terminal after installation. On cluster jobs, also include `export PATH="$HOME/.local/bin/plink-1.9:$PATH"` in the job script, since batch shells may not load your interactive shell configuration. For other platforms or architecture compatibility, consult the official download page.
+
+The previously checked local PLINK version was 1.90b7.2; the newer download above has not been validated with a complete HARDAM run. Record the version printed by `plink --version` with your analysis. The database inspection commands use the `sqlite3` command-line tool.
 
 
 ## 7. References
@@ -202,10 +232,8 @@ Describe any local modifications used for the analysis. Please also cite the ups
 
 HARDAM's original source code and documentation are distributed under the [MIT License](LICENSE), copyright © 2026 David O. Enoma and HARDAM contributors.
 
-MIT permits academic and commercial use, modification, and redistribution, provided the copyright and license notice are preserved. It provides the software without warranty. Its permissive terms support broad reuse of HARDAM in research and other software; see the [Open Source Initiative's MIT License](https://opensource.org/license/mit) for the standard terms. The citation request above is a scholarly attribution request, not an additional license restriction.
 
 Vendored MetaXcan/S-PrediXcan code retains its upstream MIT license and attribution: copyright © 2015 hakyimlab, with software mostly written by heroico. The [included MetaXcan license](software_deps/MetaXcan/LICENSE) reproduces the [upstream notice](https://github.com/hakyimlab/MetaXcan/blob/master/LICENSE). Other dependencies retain their respective licenses.
 
-The software license does not grant rights to protected genotype data or override the access and redistribution terms of test data, annotations, GWAS summary statistics, or other third-party datasets. Use each dataset under its provider's terms.
 
 Last updated: September 8, 2026
