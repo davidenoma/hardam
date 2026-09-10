@@ -2,7 +2,10 @@
 
 HARDAM trains expression prediction models informed by human accelerated regions (HARs) and runs transcriptome-wide association studies (TWAS) using S-PrediXcan and GWAS summary statistics. This guide describes a chromosome 1 test workflow for frontal cortex, BA9 (PFC), using the HAR+CIS model.
 
-The research genotype data are protected. Author-provided test data allow users to exercise the workflow without accessing those research files. The test example demonstrates model training and association testing; it does not reproduce the complete manuscript analyses.
+<img width="800" height="600" alt="hardam-method-figure-1" src="https://github.com/user-attachments/assets/948644bc-c453-4a3b-a7d0-517fce683643" />
+
+
+Author-provided test data allow users to exercise the workflow without accessing raw genotypes. The test example demonstrates model training and association testing
 
 Run all commands from the repository root. Paths below are repo-relative.
 
